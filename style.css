@@ -145,8 +145,66 @@ body {
     display: none;
 }
 
-.message-box {
+/* --- LE MESSAGE D'AMOUR (FAÇON LETTRE MANUSCRITE) --- */
+#love-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.paper-letter {
+    background-color: #fdfbf7; /* Couleur blanc cassé / papier */
+    color: #1a1a1a; /* Couleur de l'encre noire/grise */
+    font-family: 'Caveat', cursive; /* La police manuscrite importée */
+    padding: 3rem 2.5rem;
+    max-width: 550px;
+    width: 90%;
+    border-radius: 2px; /* Les feuilles n'ont pas de bords très arrondis */
+    
+    /* Une ombre forte pour donner l'impression que la feuille flotte au-dessus du fond noir */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 
+                inset 0 0 40px rgba(0, 0, 0, 0.05); 
+                
+    transform: rotate(-2deg); /* Petite inclinaison réaliste */
     animation: fadeInMessage 1.5s ease forwards;
+    position: relative;
+}
+
+/* On s'assure d'écraser les effets néons sur le texte de la lettre */
+.paper-letter h2 {
+    font-size: 2.8rem;
+    margin-top: 0;
+    color: #111;
+    text-align: left;
+    text-shadow: none;
+    letter-spacing: normal;
+    font-family: 'Caveat', cursive;
+}
+
+.paper-letter p {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    text-align: left;
+    margin: 1.5rem 0;
+    text-shadow: none;
+}
+
+/* Une signature avec un angle un peu différent comme si signée à la main à la va-vite */
+.paper-letter .signature {
+    text-align: right;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111 !important;
+    margin-top: 2rem;
+    transform: rotate(-3deg);
+}
+
+/* Le bouton d'entrée sur le site */
+#love-message .neon-btn {
+    margin-top: 3rem;
+    animation: fadeInMessage 2s ease forwards;
 }
 
 .message-box p {
