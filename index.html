@@ -9,7 +9,37 @@
 <body>
     <div id="particles-container" aria-hidden="true"></div>
 
-    <main class="content-wrapper">
+    <!-- NOUVEAU : Écran d'introduction avec l'enveloppe -->
+    <div id="intro-screen">
+        <div class="envelope-wrapper" id="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter-paper"></div>
+                <div class="flap"></div>
+                <div class="pocket"></div>
+            </div>
+            
+            <div class="click-indicator">
+                <div class="pulse-ring"></div>
+                <span>Ouvrir le message</span>
+            </div>
+        </div>
+
+        <div id="love-message" class="hidden">
+            <div class="glass-panel message-box">
+                <h2 class="glowing-text" style="font-size: 2.5rem;">Pour ma Stakyra,</h2>
+                <p>
+                    Aujourd'hui est une journée spéciale pour célébrer la femme exceptionnelle que tu es. 
+                    Chaque jour passé à tes côtés est une aventure incroyable et tu illumines mon monde 
+                    plus que toutes les étoiles de cette galaxie.
+                </p>
+                <p class="signature">Avec tout mon amour.</p>
+                <button id="enter-site-btn" class="neon-btn">Découvrir ton univers</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Le contenu principal (Caché au départ) -->
+    <main class="content-wrapper hidden" id="main-universe">
         <header class="hero">
             <p class="eyebrow">Pour ma Stakyra</p>
             <h1 class="glowing-text">Joyeuse Fête,<br>Stakyra</h1>
@@ -35,6 +65,8 @@
         </section>
     </main>
 
+    <!-- Script pour les particules -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
