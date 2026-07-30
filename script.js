@@ -10,11 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainUniverse = document.getElementById("main-universe");
 
     if (envelopeWrapper) {
-        // Clic pour ouvrir l'enveloppe
         envelopeWrapper.addEventListener("click", () => {
             envelopeWrapper.classList.add("is-open");
-            
-            // Attendre la fin de l'animation pour afficher le message
             setTimeout(() => {
                 envelopeWrapper.classList.add("hidden");
                 loveMessage.classList.remove("hidden");
@@ -23,23 +20,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (enterSiteBtn) {
-        // Clic sur le bouton du message pour entrer dans le site
         enterSiteBtn.addEventListener("click", () => {
             introScreen.style.opacity = "0";
-            
             setTimeout(() => {
                 introScreen.classList.add("hidden");
                 if(mainUniverse) {
                     mainUniverse.classList.remove("hidden");
                     mainUniverse.style.opacity = "1";
-                    // On lance les particules seulement quand on arrive sur le site
                     initParticles();
                 }
             }, 1000);
         });
     }
 
-    // Fonction d'initialisation des particules
     function initParticles() {
         if (typeof particlesJS !== "undefined") {
             particlesJS("particles-container", {
@@ -62,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
     // ==========================================
     // 2. LE COMPTEUR TEMPOREL
     // ==========================================
@@ -80,27 +72,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (counterElement) {
             counterElement.innerHTML = `
-                <div class="counter-item">
-                    <span>${days}</span>
-                    <span class="counter-label">Jours</span>
-                </div>
-                <div class="counter-item">
-                    <span>${hours}</span>
-                    <span class="counter-label">Heures</span>
-                </div>
-                <div class="counter-item">
-                    <span>${minutes}</span>
-                    <span class="counter-label">Minutes</span>
-                </div>
-                <div class="counter-item">
-                    <span>${seconds}</span>
-                    <span class="counter-label">Secondes</span>
-                </div>
+                <div class="counter-item"><span>${days}</span><span class="counter-label">Jours</span></div>
+                <div class="counter-item"><span>${hours}</span><span class="counter-label">Heures</span></div>
+                <div class="counter-item"><span>${minutes}</span><span class="counter-label">Minutes</span></div>
+                <div class="counter-item"><span>${seconds}</span><span class="counter-label">Secondes</span></div>
             `;
         }
     }
 
-    // On lance le compteur au chargement, puis on l'actualise toutes les secondes
     updateCounter();
     setInterval(updateCounter, 1000);
+
+    // ==========================================
+    // 3. GESTION DES MODALES (BOUQUET & PHOTOS)
+    // ==========================================
+    const btnBouquet = document.getElementById("btn-bouquet");
+    const btnGallery = document.getElementById("btn-gallery");
+    const modalBouquet = document.getElementById("bouquet-modal");
+    const modalGallery = document.getElementById("gallery-modal");
+    const closeBtns = document.querySelectorAll(".close-btn");
+
+    // Ouvrir le bouquet
+    if(btnBouquet) {
+        btnBouquet.addEventListener("click", () => {
+            modalBouquet.classList.remove("hidden");
+        });
+    }
+
+    // Ouvrir la galerie
+    if(btnGallery) {
+        btnGallery.addEventListener("click", () => {
+            modalGallery.classList.remove("hidden");
+        });
+    }
+
+    // Fermer les modales avec la croix
+    closeBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            modalBouquet.classList.add("hidden");
+            modalGallery.classList.add("hidden");
+        });
+    });
+
+    // Fermer en cliquant en dehors de la fenêtre
+    window.addEventListener("click", (e) => {
+        if (e.target === modalBouquet) {
+            modalBouquet.classList.add("hidden");
+        }
+        if (e.target === modalGallery) {
+            modalGallery.classList.add("hidden");
+        }
+    });
 });
