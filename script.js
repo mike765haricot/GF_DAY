@@ -1,44 +1,47 @@
 document.addEventListener("DOMContentLoaded", () => {
     
     // ==========================================
-    // 1. SYSTÈME DE DÉVERROUILLAGE & PARTICULES
+    // 1. SCÈNE D'INTRODUCTION (LA LETTRE)
     // ==========================================
-    const unlockBtn = document.getElementById("unlock-btn");
-    const passwordInput = document.getElementById("password-input");
-    const lockScreen = document.getElementById("lock-screen");
+    const envelopeWrapper = document.getElementById("envelope-wrapper");
+    const loveMessage = document.getElementById("love-message");
+    const enterSiteBtn = document.getElementById("enter-site-btn");
+    const introScreen = document.getElementById("intro-screen");
     const mainUniverse = document.getElementById("main-universe");
-    const errorMsg = document.getElementById("error-msg");
 
-    const TARGET_DATE = "10092025"; 
+    if (envelopeWrapper) {
+        // Clic pour ouvrir l'enveloppe
+        envelopeWrapper.addEventListener("click", () => {
+            envelopeWrapper.classList.add("is-open");
+            
+            // Attendre la fin de l'animation pour afficher le message
+            setTimeout(() => {
+                envelopeWrapper.classList.add("hidden");
+                loveMessage.classList.remove("hidden");
+            }, 1500); 
+        });
+    }
 
-    // Si tu utilises l'écran de déverrouillage
-    if (unlockBtn) {
-        unlockBtn.addEventListener("click", () => {
-            if (passwordInput.value === TARGET_DATE) {
-                // Disparition de l'écran de verrouillage
-                lockScreen.style.opacity = "0";
-                
-                setTimeout(() => {
-                    lockScreen.classList.add("hidden");
+    if (enterSiteBtn) {
+        // Clic sur le bouton du message pour entrer dans le site
+        enterSiteBtn.addEventListener("click", () => {
+            introScreen.style.opacity = "0";
+            
+            setTimeout(() => {
+                introScreen.classList.add("hidden");
+                if(mainUniverse) {
                     mainUniverse.classList.remove("hidden");
                     mainUniverse.style.opacity = "1";
-                    
-                    // Lancement des particules une fois déverrouillé
+                    // On lance les particules seulement quand on arrive sur le site
                     initParticles();
-                }, 1000);
-            } else {
-                errorMsg.classList.remove("hidden");
-            }
+                }
+            }, 1000);
         });
-    } else {
-        // Si tu n'utilises pas l'écran de déverrouillage, on lance l'effet grandiose directement
-        initParticles();
     }
 
     // Fonction d'initialisation des particules
     function initParticles() {
         if (typeof particlesJS !== "undefined") {
-            // Configuration pour un effet "Ciel étoilé / Galaxie" riche et interactif
             particlesJS("particles-container", {
                 "particles": {
                     "number": { "value": 150 },
