@@ -10,7 +10,7 @@
 <body>
     <div id="particles-container" aria-hidden="true"></div>
 
-    <!-- NOUVEAU : Écran d'introduction avec l'enveloppe -->
+    <!-- 1. Écran d'introduction avec l'enveloppe -->
     <div id="intro-screen">
         <div class="envelope-wrapper" id="envelope-wrapper">
             <div class="envelope">
@@ -26,46 +26,39 @@
         </div>
 
         <div id="love-message" class="hidden">
-  <div class="paper-letter">
-    <h2>Pour ma Stakyra,</h2>
-    
-    <p>
-        Aujourd'hui, pour cette journée qui t'est dédiée, je voulais prendre un instant pour 
-        te rappeler à quel point tu es précieuse pour moi. Ce petit univers numérique, 
-        je l'ai construit pour essayer de te montrer ce que tu représentes à mes yeux.
-    </p>
-    
-    <p>
-        Depuis ce fameux 10 septembre, ma vie a pris une toute autre dimension. 
-        Chaque jour qui s'ajoute à notre compteur me rappelle la chance inouïe que j'ai 
-        de t'avoir à mes côtés. Tu es mon évidence, mon équilibre, et celle qui me donne 
-        envie de me surpasser au quotidien. 
-    </p>
+            <div class="paper-letter">
+                <h2>Pour ma <span class="highlight-name">Stakyra</span>,</h2>
+                
+                <p>
+                    Aujourd'hui n'est pas juste une date sur le calendrier. C'est l'occasion parfaite de m'arrêter un instant pour célébrer la femme incroyable que tu es. Ce petit univers numérique, je l'ai codé ligne après ligne avec toi en tête, pour te montrer que tu es au centre de mon monde.
+                </p>
+                
+                <p>
+                    Depuis ce fameux 10 septembre, ma vie a pris une dimension magique. Chaque seconde passée à tes côtés est une évidence. Tu es mon équilibre, ma plus belle certitude, et celle qui m'inspire à être meilleur chaque jour. 
+                </p>
 
-    <p>
-        Et je sais que ce n'est que le début de notre histoire. Bientôt, un nouveau chapitre 
-        va s'ouvrir pour nous avec cette prochaine étape à Madrid. Peu importe les distances, 
-        les changements ou les défis qui nous attendent, je suis prêt à tout affronter 
-        tant que nous avançons ensemble.
-    </p>
+                <p>
+                    Notre histoire est déjà magnifique, et ce n'est que le début. Bientôt, un nouveau chapitre va s'ouvrir pour nous avec cette prochaine étape à Madrid. Peu importe les distances ou les nouveaux défis, tant que nous avançons main dans la main, je me sens chez moi.
+                </p>
 
-    <p>
-        Merci d'être la femme exceptionnelle que tu es. Merci d'être la lumière de mon monde.
-    </p>
-    
-    <p class="signature">Avec tout mon amour.</p>
-</div>
-    
-    <!-- Le bouton est placé en dessous de la feuille de papier -->
-    <button id="enter-site-btn" class="neon-btn">Découvrir ton univers</button>
-</div>
+                <p>
+                    Merci d'être l'étoile la plus brillante de ma galaxie.
+                </p>
+                
+                <div class="signature-block">
+                    <p class="signature">Avec tout mon amour.</p>
+                    <div class="wax-seal" title="Sceau d'amour"></div>
+                </div>
+            </div>
+            <button id="enter-site-btn" class="neon-btn">Découvrir ton univers</button>
+        </div>
     </div>
 
-    <!-- Le contenu principal (Caché au départ) -->
+    <!-- 2. Le Tableau de Bord Principal -->
     <main class="content-wrapper hidden" id="main-universe">
         <header class="hero">
             <p class="eyebrow">Pour ma Stakyra</p>
-            <h1 class="glowing-text">Joyeuse Fête,<br>Stakyra</h1>
+            <h1 class="glowing-text">Joyeuse Fête</h1>
             <p class="subtitle">Mon univers depuis le premier jour, et tout ce qu’on construit ensemble.</p>
         </header>
 
@@ -77,16 +70,52 @@
         </section>
 
         <section class="interactive-cards">
-            <article class="card floating-element">
-                <h3>Nos souvenirs</h3>
-                <p>Chaque instant devient une lumière dans mon univers.</p>
+            <article class="card floating-element" id="btn-gallery">
+                <h3>Pour la plus belle</h3>
+                <p>Une petite galerie dédiée à l'étoile de mon univers. Clique pour l'ouvrir.</p>
             </article>
-            <article class="card floating-element delay-1">
+            <article class="card floating-element delay-1" id="btn-bouquet">
+                <h3>Une Surprise...</h3>
+                <p>Ce que j'aurais aimé te donner en mains propres aujourd'hui.</p>
+            </article>
+            <article class="card floating-element delay-2">
                 <h3>Prochaine étape</h3>
                 <p>Madrid, nos rêves et tout ce qu’on partage encore.</p>
             </article>
         </section>
     </main>
+
+    <!-- 3. FENÊTRES MODALES (Cachées par défaut) -->
+    
+    <!-- Modal du Bouquet -->
+    <div id="bouquet-modal" class="custom-modal hidden">
+        <div class="modal-content bouquet-content">
+            <button class="close-btn">&times;</button>
+            <div class="bouquet-wrapper">
+                <!-- Image HD de roses rouges très réalistes -->
+                <img src="https://images.unsplash.com/photo-1542458428-21d374ce35fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Magnifique bouquet de roses rouges" class="realistic-bouquet">
+                <div class="bouquet-note">
+                    <p>Même si la distance nous sépare physiquement aujourd'hui, mon cœur est toujours tout près du tien. Bonne fête mon amour.</p>
+                    <span class="note-signature">- Ton chéri -</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de la Galerie Photo -->
+    <div id="gallery-modal" class="custom-modal hidden">
+        <div class="modal-content gallery-content">
+            <button class="close-btn">&times;</button>
+            <h2 class="glowing-text" style="font-size: 2rem; margin-bottom: 2rem;">La star du jour</h2>
+            <div class="photo-grid">
+                <!-- Remplace les "src" par le nom de tes photos dans ton dossier GitHub -->
+                <div class="photo-frame"><img src="photo1.jpg" alt="Ma Stakyra"></div>
+                <div class="photo-frame"><img src="photo2.jpg" alt="Ma Stakyra"></div>
+                <div class="photo-frame"><img src="photo3.jpg" alt="Ma Stakyra"></div>
+                <div class="photo-frame"><img src="photo4.jpg" alt="Ma Stakyra"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Script pour les particules -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
